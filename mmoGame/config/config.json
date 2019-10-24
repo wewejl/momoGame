@@ -1,0 +1,9 @@
+{
+  "IP": "0.0.0.0",
+  "Port": 8999,
+  "Name": "传奇老村长",
+  "TCPVersion": "tcp",
+  "workerSize":5,
+  "Workerqueue":100,
+  "connAllowMax": 10
+}

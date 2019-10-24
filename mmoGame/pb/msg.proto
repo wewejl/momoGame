@@ -1,0 +1,51 @@
+//头
+syntax ="proto3";
+
+
+//包名
+package mmomsg;
+
+
+//定义具体协议
+//sync：同步,async:异步
+//msgid :1
+message syncid {
+    int32 pid =1;
+}
+
+
+//定义一个Position协议，用于存放位置
+message Position{
+    float x =1;
+    float y =2;
+    float z =3;
+    float v =4;
+}
+
+
+
+//msgid : 200
+//定 义 一 个 BroadCast 广 播 协 议 , 根 据 类 型 , 发 送 消 息
+message BroadCast{
+    int32 pid =1;
+    int32 Tp=2; //1:聊天，2:位置,3.其他
+    oneof Data{
+        string content =3;//具体的聊天内容
+        Position p =4;//移动的位置
+        int32 ActionData=5;//动作
+    }
+}
+
+//另一个talk
+message talk{
+    string content =1;
+}
+
+//用于同步
+message SyncPlayers{
+    message Player{
+        int32 pid =1;
+        Position p =2;
+    }
+    repeated Player ps =1;
+}
